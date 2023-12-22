@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  calculator_bot:
+    image: calculator_bot
+    build:
+      context: .
+    container_name: calculator_bot
+    env_file:
+      - .env
+    command: python -m bot
+    restart: on-failure
+    ports:
+      - "8443:443"
+    networks:
+      - custom
+
+networks:
+  custom:
+    driver: bridge
